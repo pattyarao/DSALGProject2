@@ -4,7 +4,14 @@ public class Queue {
 	private int count;
 	private Node headNode;
 	private Node tailNode;
-	
+
+	public Queue(int n) {
+		this.n = n;
+		this.count = 0;
+		this.headNode = null;
+		this.tailNode = null;
+	}
+
 	public int getN() {
 		return n;
 	}
@@ -29,4 +36,43 @@ public class Queue {
 	public void setTailNode(Node tailNode) {
 		this.tailNode = tailNode;
 	}
+
+	//Queue Implementation
+
+	public boolean isQueueEmpty(){
+		if (this.headNode == null && this.tailNode == null){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public boolean isQueueFull(){
+		if (this.count == this.n - 1){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+
+
+	public String head(){
+		if (!isQueueEmpty()){
+			return this.headNode.getData();
+		}
+
+		return null;
+	}
+
+	public String tail(){
+		if (!isQueueEmpty()){
+			return this.tailNode.getData();
+		}
+
+		return null;
+	}
+
 }
