@@ -1,12 +1,9 @@
-public class Algorithms {
-
-	//public static String infixToPostfix(String infix) {
-		
-		
-	//}
-	
-	public static int evaluatePostfix(String postfix) {
-		int length = postfix.length();
+public class EvaluationDriver {
+    public static void main(String[] args) {
+        String test = "1 2 3 * + 4 +";
+    
+    public static int evaluatePostfix(String test) {
+        int length = postfix.length();
 
 		Stack stack1 = new Stack(length);
 		String[] arrToken = postfix.split("\\s+");
@@ -47,5 +44,6 @@ public class Algorithms {
 			oResult = operand1/operand2;
 		}
 		return oResult;
-	}
+    }   System.out.println(result);
+    }
 }
