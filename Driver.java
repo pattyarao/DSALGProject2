@@ -11,8 +11,14 @@ public class Driver {
 				break;
 			} else {
 				System.out.println(Algorithms.infixToPostfix(userInput));
-				System.out.println(Algorithms.evaluatePostfix(Algorithms.infixToPostfix(userInput)));
+
+				int evaluation = Algorithms.evaluatePostfix(Algorithms.infixToPostfix(userInput));
+
+				if (evaluation != -1){
+					System.out.println(evaluation);
+				}
 			}
+			System.out.println();
 		}
 
 		scanner.close();
