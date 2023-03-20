@@ -1,49 +1,13 @@
 public class EvaluationDriver {
     public static void main(String[] args) {
-        String test = "1 2 3 * + 4 +";
-    
-    public static int evaluatePostfix(String test) {
-        int length = postfix.length();
+        String test = "1 3 7 / + 4 +";
+		String test2 = "300 23 + 43 21 − ∗ 84 7 + /";
+        String test3 = "4 8 + 6 5 - * 3 2 - 2 2 + * /";
+        String test4 = "1 2 3 * + 4 +";
+		System.out.println(Algorithms.evaluatePostfix(test));
+		System.out.println(Algorithms.evaluatePostfix(test2));
+        System.out.println(Algorithms.evaluatePostfix(test3));
+        System.out.println(Algorithms.evaluatePostfix(test4));
 
-		Stack stack1 = new Stack(length);
-		String[] arrToken = postfix.split("\\s+");
-
-		for (String token : arrToken)
-		{
-			if (isANumber(token)) {
-				stack1.push(token);
-			} else {
-				int operand1 = Integer.parseInt(stack1.pop());
-				int operand2 = Integer.parseInt(stack1.pop());
-				int result = tokenOperation(token, operand1, operand2);
-				stack1.push(Integer.toString(result));
-			}
-		}
-
-		return Integer.parseInt(stack1.pop());
-	}
-
-	public static boolean isANumber(String token) {
-		try {
-			Integer.parseInt(token);
-			return true;
-		} catch (NumberFormatException e) {
-			return false;
-		}
-	}
-
-	public static int tokenOperation (String token, int operand1, int operand2) {
-		int oResult = 0;
-		if (token.equals("+")){
-			oResult = operand1+operand2;
-		} else if (token.equals("-")){
-			oResult = operand1-operand2;
-		} else if (token.equals("*")){
-			oResult = operand1*operand2;
-		} else if (token.equals("/")){
-			oResult = operand1/operand2;
-		}
-		return oResult;
-    }   System.out.println(result);
     }
 }

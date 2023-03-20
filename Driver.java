@@ -64,6 +64,8 @@ public class Driver {
 			test = test.getNextNode();
 		}
 
+		String testing = "-";
+		System.out.println(testing.equals("-"));
 	}
 
 }
