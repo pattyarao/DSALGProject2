@@ -77,7 +77,7 @@ public class Stack {
 			this.count--;
 			return retVal;
 		} else {
-			return "Warning";
+			return "Cannot Pop. Stack Already Empty";
 		}
 	}
 
@@ -94,7 +94,7 @@ public class Stack {
 
 		if (isStackEmpty()) {
 			System.out.println("Error!");
-			return "ERROR";
+			return "Stack is empty.";
 		} else {
 			return this.topNode.getData();
 		}

@@ -57,6 +57,55 @@ public class Queue {
 		}
 	}
 
+	public void enqueue(String data){
+		if (!isQueueFull()){
+			if (isQueueEmpty()){
+				Node newNode = new Node(data, null);
+				this.headNode = newNode;
+				this.tailNode = newNode;
+				this.count++;
+			}
+			else {
+				Node newNode = new Node(data, null);
+				this.tailNode.setNextNode(newNode);
+				this.tailNode = this.tailNode.getNextNode();
+				this.count++;
+			}
+		}
+		else {
+			System.out.println("Queue is full. Cannot Add more");
+		}
+	}
+	public String dequeue(){
+		if (!isQueueEmpty()){
+
+			if (this.count == 1){
+				String retVal = this.headNode.getData();
+				this.headNode = null;
+				this.tailNode = null;
+				return retVal;
+			}
+			else {
+				String retVal = this.headNode.getData();
+				this.headNode = this.headNode.getNextNode();
+				this.count--;
+				return retVal;
+			}
+
+		}
+
+		return null;
+	}
+
+	public void displayQueue() {
+		Node temp = this.headNode;
+		System.out.println("QUEUE: ");
+		while (temp != null) {
+			System.out.println(temp.getData());
+			temp = temp.getNextNode();
+		}
+	}
+
 
 
 	public String head(){
@@ -64,7 +113,7 @@ public class Queue {
 			return this.headNode.getData();
 		}
 
-		return null;
+		return "None";
 	}
 
 	public String tail(){
@@ -72,7 +121,7 @@ public class Queue {
 			return this.tailNode.getData();
 		}
 
-		return null;
+		return "None";
 	}
 
 }
