@@ -63,11 +63,44 @@ public class Algorithms {
 
 	public static int getPrecedence(String token) {
 
-		if (token.equals("+") || token.equals("-")) {
-			return 1;
-		} else if (token.equals("*") || token.equals("/")) {
-			return 2;
+		// if (token.equals("+") || token.equals("-")) {
+		// return 1;
+		// } else if (token.equals("*") || token.equals("/")) {
+		// return 2;
+		// } else if (token.equals("^")) {
+		// return 3;
+		// }
+
+		// return -1;
+
+		// logical ! (not)
+		if (token.equals("!")) {
+			return 13;
+
+			// exponent
 		} else if (token.equals("^")) {
+			return 12;
+
+			// arithmetic * and /
+		} else if (token.equals("*") || token.equals("/")) {
+			return 11;
+
+			// arithmetic + and -
+		} else if (token.equals("+") || token.equals("-")) {
+			return 10;
+
+			// relational operators are all EQUAL precedence
+		} else if (token.equals("<") || token.equals("<=")
+				|| token.equals(">") || token.equals(">=")
+				|| token.equals("!=") || token.equals("==")) {
+			return 8;
+
+			// logical &&
+		} else if (token.equals("&&")) {
+			return 4;
+
+			// logical ||
+		} else if (token.equals("||")) {
 			return 3;
 		}
 
