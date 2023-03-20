@@ -20,8 +20,6 @@ public class Algorithms {
 
 		for (String s : strArr) {
 
-			// String current = String.valueOf(infix.charAt(i));
-
 			if (isANumber(s)) {
 				postfix.append(s + " ");
 			} else if (s.equals("(")) {
@@ -63,16 +61,6 @@ public class Algorithms {
 
 	public static int getPrecedence(String token) {
 
-		// if (token.equals("+") || token.equals("-")) {
-		// return 1;
-		// } else if (token.equals("*") || token.equals("/")) {
-		// return 2;
-		// } else if (token.equals("^")) {
-		// return 3;
-		// }
-
-		// return -1;
-
 		// logical ! (not)
 		if (token.equals("!")) {
 			return 13;
@@ -112,10 +100,10 @@ public class Algorithms {
 		int end = 0;
 		String div = "/";
 		String not = "!";
-	
+
 		Stack stack1 = new Stack(length);
 		String[] arrToken = postfix.split("\\s+");
-	
+
 		for (String token : arrToken) {
 			if (isANumber(token)) {
 				stack1.push(token);
@@ -130,7 +118,7 @@ public class Algorithms {
 			} else {
 				int operand2 = Integer.parseInt(stack1.pop());
 				int operand1 = Integer.parseInt(stack1.pop());
-				if (token.equals(div) && operand2 == 0){
+				if (token.equals(div) && operand2 == 0) {
 					end = -1;
 					break;
 				}
@@ -138,17 +126,16 @@ public class Algorithms {
 				stack1.push(Integer.toString(result));
 			}
 		}
-	
-		if (end == -1){
+
+		if (end == -1) {
 			System.out.println("Division by zero error!");
 			return -1;
 		} else {
 			return Integer.parseInt(stack1.pop());
 		}
-		
+
 	}
 
-	
 	public static int tokenOperation(String token, int operand1, int operand2) {
 		int oResult = 0;
 		String sub = "−";
@@ -164,7 +151,7 @@ public class Algorithms {
 		String isEqual2 = "=";
 		String andOp = "&&";
 		String orOp = "||";
-	
+
 		if (token.equals(add)) {
 			oResult = operand1 + operand2;
 		} else if (token.equals(sub) || token.equals("-")) {
@@ -210,13 +197,13 @@ public class Algorithms {
 				oResult = 0;
 			}
 		} else if (token.equals(andOp)) {
-			if (operand1 > 0 && operand2 > 0 ) {
+			if (operand1 > 0 && operand2 > 0) {
 				oResult = 1;
 			} else {
 				oResult = 0;
 			}
 		} else if (token.equals(orOp)) {
-			if (operand1 == 0 && operand2 == 0 ) {
+			if (operand1 == 0 && operand2 == 0) {
 				oResult = 0;
 			} else {
 				oResult = 1;
