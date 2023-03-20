@@ -147,15 +147,7 @@ public class Algorithms {
 		}
 		
 	}
-	
-	// public static boolean isANumber(String token) {
-	// try {
-	// Integer.parseInt(token);
-	// return true;
-	// } catch (NumberFormatException e) {
-	// return false;
-	// }
-	// }
+
 	
 	public static int tokenOperation(String token, int operand1, int operand2) {
 		int oResult = 0;
