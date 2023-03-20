@@ -61,8 +61,6 @@ public class Stack {
 				this.topNode = new Node(data, null);
 			} else {
 				Node newNode = new Node(data, null);
-				// this.topNode.setNextNode(newNode);
-				// this.topNode = this.topNode.getNextNode();
 				newNode.setNextNode(this.topNode);
 				this.topNode = newNode;
 				this.count++;
