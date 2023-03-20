@@ -109,24 +109,45 @@ public class Algorithms {
 
 	public static int evaluatePostfix(String postfix) {
 		int length = postfix.length();
-
+		int end = 0;
+		String div = "/";
+		String not = "!";
+	
 		Stack stack1 = new Stack(length);
 		String[] arrToken = postfix.split("\\s+");
-
+	
 		for (String token : arrToken) {
 			if (isANumber(token)) {
 				stack1.push(token);
+			} else if (token.equals(not)) {
+				int operand1 = Integer.parseInt(stack1.pop());
+				if (operand1 > 0) {
+					operand1 = 0;
+				} else {
+					operand1 = 1;
+				}
+				stack1.push(Integer.toString(operand1));
 			} else {
 				int operand2 = Integer.parseInt(stack1.pop());
 				int operand1 = Integer.parseInt(stack1.pop());
+				if (token.equals(div) && operand2 == 0){
+					end = -1;
+					break;
+				}
 				int result = tokenOperation(token, operand1, operand2);
 				stack1.push(Integer.toString(result));
 			}
 		}
-
-		return Integer.parseInt(stack1.pop());
+	
+		if (end == -1){
+			System.out.println("Division by zero error!");
+			return -1;
+		} else {
+			return Integer.parseInt(stack1.pop());
+		}
+		
 	}
-
+	
 	// public static boolean isANumber(String token) {
 	// try {
 	// Integer.parseInt(token);
@@ -135,14 +156,23 @@ public class Algorithms {
 	// return false;
 	// }
 	// }
-
+	
 	public static int tokenOperation(String token, int operand1, int operand2) {
 		int oResult = 0;
 		String sub = "−";
 		String add = "+";
 		String mult = "∗";
 		String div = "/";
-
+		String greatThan = ">";
+		String lessThan = "<";
+		String gtEqual = ">=";
+		String ltEqual = "<=";
+		String notEqual = "!=";
+		String isEqual = "==";
+		String isEqual2 = "=";
+		String andOp = "&&";
+		String orOp = "||";
+	
 		if (token.equals(add)) {
 			oResult = operand1 + operand2;
 		} else if (token.equals(sub) || token.equals("-")) {
@@ -151,6 +181,54 @@ public class Algorithms {
 			oResult = operand1 * operand2;
 		} else if (token.equals(div)) {
 			oResult = operand1 / operand2;
+		} else if (token.equals(greatThan)) {
+			if (operand1 > operand2) {
+				oResult = 1;
+			} else {
+				oResult = 0;
+			}
+		} else if (token.equals(lessThan)) {
+			if (operand1 < operand2) {
+				oResult = 1;
+			} else {
+				oResult = 0;
+			}
+		} else if (token.equals(gtEqual)) {
+			if (operand1 >= operand2) {
+				oResult = 1;
+			} else {
+				oResult = 0;
+			}
+		} else if (token.equals(ltEqual)) {
+			if (operand1 <= operand2) {
+				oResult = 1;
+			} else {
+				oResult = 0;
+			}
+		} else if (token.equals(notEqual)) {
+			if (operand1 != operand2) {
+				oResult = 1;
+			} else {
+				oResult = 0;
+			}
+		} else if (token.equals(isEqual) || token.equals(isEqual2)) {
+			if (operand1 == operand2) {
+				oResult = 1;
+			} else {
+				oResult = 0;
+			}
+		} else if (token.equals(andOp)) {
+			if (operand1 > 0 && operand2 > 0 ) {
+				oResult = 1;
+			} else {
+				oResult = 0;
+			}
+		} else if (token.equals(orOp)) {
+			if (operand1 == 0 && operand2 == 0 ) {
+				oResult = 0;
+			} else {
+				oResult = 1;
+			}
 		}
 		return oResult;
 	}
