@@ -118,21 +118,13 @@ public class Algorithms {
 			} else {
 				int operand2 = Integer.parseInt(stack1.pop());
 				int operand1 = Integer.parseInt(stack1.pop());
-				if (token.equals(div) && operand2 == 0) {
-					end = -1;
-					break;
-				}
 				int result = tokenOperation(token, operand1, operand2);
 				stack1.push(Integer.toString(result));
 			}
 		}
 
-		if (end == -1) {
-			System.out.println("Division by zero error!");
-			return -1;
-		} else {
-			return Integer.parseInt(stack1.pop());
-		}
+
+		return Integer.parseInt(stack1.pop());
 
 	}
 

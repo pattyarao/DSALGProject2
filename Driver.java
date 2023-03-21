@@ -12,11 +12,14 @@ public class Driver {
 			} else {
 				System.out.println(Algorithms.infixToPostfix(userInput));
 
-				int evaluation = Algorithms.evaluatePostfix(Algorithms.infixToPostfix(userInput));
-
-				if (evaluation != -1){
+				try {
+					int evaluation = Algorithms.evaluatePostfix(Algorithms.infixToPostfix(userInput));
 					System.out.println(evaluation);
 				}
+				catch (Exception e){
+					System.out.println("Division by zero error!");
+				}
+
 			}
 			System.out.println();
 		}
