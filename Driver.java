@@ -15,8 +15,7 @@ public class Driver {
 				try {
 					int evaluation = Algorithms.evaluatePostfix(Algorithms.infixToPostfix(userInput));
 					System.out.println(evaluation);
-				}
-				catch (Exception e){
+				} catch (Exception e) {
 					System.out.println("Division by zero error!");
 				}
 
